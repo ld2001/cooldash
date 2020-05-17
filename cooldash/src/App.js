@@ -2,24 +2,60 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
+
+function Twitter() {
+  return <h1> Tweets! </h1>;
+}
+
+function Mid() {
+  return <div class="wrapper">
+  <News></News>
+  <Stocks></Stocks>
+</div>;
+}
+
+function News() {
+  return <div class="box a">News</div>;
+}
+
+function Stocks() {
+  return <div class="box b">Stock</div>;
+}
+
+function Graphs() {
+  return <h1> Graphs! </h1>;;
+}
+
+function SplitPane(props) {
+  return (
+    <div className="SplitPane">
+      <div className="SplitPane-left">
+        {props.top}
+      </div>
+      <div className="SplitPane-mid">
+        {props.mid}
+      </div>
+      <div className="SplitPane-right">
+        {props.bottom}
+      </div>
+    </div>
+  );
+}
+
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SplitPane
+      top={
+        <Twitter />
+      }
+      mid={
+        <Mid />
+      }
+      bottom={
+        <Graphs />
+      } />
   );
 }
 

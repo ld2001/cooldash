@@ -28,6 +28,22 @@
   color: #61dafb;
 }
 
+.Chat {
+  color: #61dafb;
+  height: 50px;
+  width: 50px;
+}
+
+.Contacts {
+  color: rgb(160, 92, 92);
+  height: 50px;
+  width: 50px;
+}
+
+div {
+  border: 2px solid black;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +51,21 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-gap: 10px;
+  background-color: #fff;
+  color: #444;
+}
+
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+  height: 150px;
 }
