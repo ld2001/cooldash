@@ -12,6 +12,7 @@ function Mid() {
   return <div class="wrapper">
   <News></News>
   <Stocks></Stocks>
+  
 </div>;
 }
 
@@ -58,5 +59,21 @@ function App() {
       } />
   );
 }
+
+
+fetch("https://yahoo-finance15.p.rapidapi.com/api/yahoo/qu/quote/FMCC", {
+  "method": "GET",
+  "headers": {
+    "x-rapidapi-host": "yahoo-finance15.p.rapidapi.com",
+    "x-rapidapi-key": "5447e4c19amsh97fe59f8c09fabdp127dfcjsn0d4259531f73",
+    "useQueryString": true
+  }
+})
+.then(response => response.json())
+.then(response => {
+  console.log(response);
+})
+.catch(err => { console.log(err); 
+});
 
 export default App;
