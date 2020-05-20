@@ -50,20 +50,21 @@ function SplitPane(props) {
   );
 }
 
-let data = [
-	{Date : 5,
-	Price : 6}
-];
   
 class Example extends PureComponent {
 	static jsfiddleUrl = 'https://jsfiddle.net/alidingling/xqjtetw0/';
   
+	constructor(props) {
+		super(props);
+		this.state = {data: new Object()};
+	}
+
 	render() {
 	  return (
 		<LineChart
 		  width={500}
 		  height={300}
-		  data={data}
+		  data={this.state.data}
 		  margin={{
 			top: 5, right: 30, left: 20, bottom: 5,
 		  }}
@@ -94,15 +95,15 @@ class Example extends PureComponent {
 			return response;
 			}) 
 			.then (response => {
+				var newData = [];
 				for (const day in response.items) {
 					var temp = new Object();
 					temp["Date"] = response.items[day].date;
 					temp["Price"] = response.items[day].close;
-					data.push(temp);
-					
-					
+					newData.push(temp);	
 				}
-				console.log(data);
+
+				this.setState({data: newData});
 				
 		})
 	}
