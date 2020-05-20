@@ -70,11 +70,11 @@ class Example extends PureComponent {
 		  }}
 		>
 		  <CartesianGrid strokeDasharray="3 3" />
-		  <XAxis dataKey="Date" />
+		  <XAxis dataKey="Date" tick={false}/>
 		  <YAxis />
 		  <Tooltip />
 		  <Legend />
-		  <Line type="monotone" dataKey="Price" stroke="#8884d8" activeDot={{ r: 8 }} />
+		  <Line type="monotone" dataKey="Price" stroke="#8884d8" activeDot={{ r: 0 }} dot={false} />
 		</LineChart>
 	  );
 	}
@@ -98,7 +98,7 @@ class Example extends PureComponent {
 				var newData = [];
 				for (const day in response.items) {
 					var temp = new Object();
-					temp["Date"] = response.items[day].date;
+					temp["Date"] = day;
 					temp["Price"] = response.items[day].close;
 					newData.push(temp);	
 				}
