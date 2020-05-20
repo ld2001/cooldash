@@ -1,21 +1,25 @@
 import React, { PureComponent } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {
 	LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   } from 'recharts';
+import RecordTransaction from "./components/record-transaction.component";
+import ShowTransactions from "./components/show-transactions.component";
+
 
 var Component = React.Component;
 var CanvasJSReact = require('./canvasjs.react');
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
+
+
 function Twitter() {
   return <h1> Tweets! </h1>;
 }
 
 function Mid() {
-  return <div class="wrapper">
+  return <div className="wrapper">
   <News></News>
   <Stocks></Stocks>
   
@@ -23,11 +27,11 @@ function Mid() {
 }
 
 function News() {
-  return <div class="box a">News</div>;
+  return <div className="box a">News</div>;
 }
 
 function Stocks() {
-  return <div class="box b">Stock</div>;
+  return <div className="box b">Stock</div>;
 }
 
 function Graphs() {
@@ -37,15 +41,22 @@ function Graphs() {
 function SplitPane(props) {
   return (
     <div className="SplitPane">
-      <div className="SplitPane-left">
-        {props.top}
-      </div>
-      <div className="SplitPane-mid">
-        {props.mid}
-      </div>
-      <div className="SplitPane-right">
-        {props.bottom}
-      </div>
+		<div className="SplitPane-left">
+			{props.top}
+		</div>
+		<div className="SplitPane-mid">
+			{props.mid}
+		</div>
+		<div className="SplitPane-right">
+			{props.bottom}
+		</div>
+		<div className="SplitPane-bottom2">
+			{props.bottomtwo}
+		</div>
+		<div className="SplitPane-bottom3">
+			{props.bottomthree}
+		</div>
+		  
     </div>
   );
 }
@@ -110,24 +121,34 @@ class Example extends PureComponent {
 	  
 	
 	componentDidMount(){
-	this.getData();
+	// this.getData();	// comment it out (try not to make API calls)
 	this.render();
 	}
   }
-  
+
+
+
 
 function App() {
-  return (
+	return (
     <SplitPane
-      top={
-        <Twitter />
-      }
-      mid={
-        <Mid />
-      }
-      bottom={
-        <Example />
-      } />
+			top={
+				<Twitter />
+			}
+			mid={
+				<Mid />
+			}
+			bottom={
+				<Example />
+			}
+			bottomtwo={
+				<RecordTransaction />
+			}
+			bottomthree={
+				<ShowTransactions />
+			}
+		>
+	</SplitPane>
   );
 }
 
@@ -157,8 +178,6 @@ function App() {
 // })
 // .catch(err => { console.log(err); 
 // });
-
-
 
 
 export default App;
