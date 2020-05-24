@@ -69,3 +69,13 @@ div {
   font-size: 150%;
   height: 150px;
 }
+
+.news {
+  width: 600px;
+  overflow: scroll;
+  height: 300px;
+}
+
+span {
+  overflow: hidden;
+}
