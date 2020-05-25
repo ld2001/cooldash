@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 class DataInput extends Component {
     constructor(props) {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
+        this.handleDate = this.handleDate.bind(this);
         this.handleTicker = this.handleTicker.bind(this);
         this.handleOrder = this.handleOrder.bind(this);
         this.handleNumShare = this.handleNumShare.bind(this);
         this.handleSharePrice = this.handleSharePrice.bind(this);
-        this.handlePrediction = this.handlePrediction.bind(this);
-        this.handleActual = this.handleActual.bind(this);
+        // this.handlePrediction = this.handlePrediction.bind(this);
+        // this.handleActual = this.handleActual.bind(this);
 
         this.state = {
+            date: '',
             ticker: '',
             order: '', 
             num_share: '',
             per_share_price: '',
-            prediction: '',
-            actual: ''
+            // prediction: '',
+            // actual: ''
         }
+    }
+
+    handleDate(e) { 
+        this.setState({
+            date: e.target.value
+        });
     }
 
     handleTicker(e) { 
@@ -46,46 +55,51 @@ class DataInput extends Component {
         });
     }
  
-    handlePrediction(e) { 
-        this.setState({
-            prediction: e.target.value
-        });
-    }
+    // handlePrediction(e) { 
+    //     this.setState({
+    //         prediction: e.target.value
+    //     });
+    // }
  
-    handleActual(e) {
-        this.setState({
-            actual: e.target.value
-        });
-    }
+    // handleActual(e) {
+    //     this.setState({
+    //         actual: e.target.value
+    //     });
+    // }
 
     onSubmit(e) { 
         e.preventDefault(); 
 
-        console.log("will it work?"); 
+        console.log("will it work?");
         const dailyrecord = {
+            date: this.state.date,  
             ticker: this.state.ticker,
             order: this.state.order, 
             num_share: this.state.num_share,
             per_share_price: this.state.per_share_price,
-            prediction: this.state.prediction,
-            actual: this.state.actual
+            // prediction: this.state.prediction,
+            // actual: this.state.actual
         }
 
         console.log(dailyrecord);
         console.log("success");
 
-        axios.post('/admin/add', dailyrecord)
+        axios.post('/adminTransaction/add', dailyrecord)
             .then(res => {
                 console.log(res.data);
             });
         
-        window.location = '/';
+        // window.location = '/';
     }
 
 	render() {
 		return (
             <form style={{ margin: 10 }} onSubmit={this.onSubmit}>
-				<h1> Daily Trading Log </h1>
+                <h1> Daily Trading Log </h1>
+                <section>
+					<label htmlFor="date">Date</label>
+                    <input type="date" id="date" onChange={this.handleDate}/>
+				</section>
 				<section>
 					<label htmlFor="ticker">Ticker</label>
                     <input type="text" id="ticker" onChange={this.handleTicker}/>
@@ -105,14 +119,14 @@ class DataInput extends Component {
 					<label htmlFor="per-share-price">Per Share Price</label>
                     <input type="number" step=".01" id="per-share-price" onChange={this.handleSharePrice}/>
 				</section>		
-				<section>
+				{/* <section>
 					<label htmlFor="prediction">Prediction</label>
                     <input type="number" step=".01" id="prediction" onChange={this.handlePrediction}/>
 				</section>
 				<section>
 					<label htmlFor="actual">Actual Performance</label>
                     <input type="number" step=".01" id="actual" onChange={this.handleActual}/>
-				</section>
+				</section> */}
 				<section className="button-container">
 					<button className="button" type="submit">Submit</button>
 					<button className="button" type="reset">Reset</button>
