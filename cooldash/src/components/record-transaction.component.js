@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
 
 class DataInput extends Component {
     constructor(props) {
@@ -11,8 +10,6 @@ class DataInput extends Component {
         this.handleOrder = this.handleOrder.bind(this);
         this.handleNumShare = this.handleNumShare.bind(this);
         this.handleSharePrice = this.handleSharePrice.bind(this);
-        // this.handlePrediction = this.handlePrediction.bind(this);
-        // this.handleActual = this.handleActual.bind(this);
 
         this.state = {
             date: '',
@@ -20,8 +17,6 @@ class DataInput extends Component {
             order: '', 
             num_share: '',
             per_share_price: '',
-            // prediction: '',
-            // actual: ''
         }
     }
 
@@ -55,18 +50,6 @@ class DataInput extends Component {
         });
     }
  
-    // handlePrediction(e) { 
-    //     this.setState({
-    //         prediction: e.target.value
-    //     });
-    // }
- 
-    // handleActual(e) {
-    //     this.setState({
-    //         actual: e.target.value
-    //     });
-    // }
-
     onSubmit(e) { 
         e.preventDefault(); 
 
@@ -77,8 +60,6 @@ class DataInput extends Component {
             order: this.state.order, 
             num_share: this.state.num_share,
             per_share_price: this.state.per_share_price,
-            // prediction: this.state.prediction,
-            // actual: this.state.actual
         }
 
         console.log(dailyrecord);
