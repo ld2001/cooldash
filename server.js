@@ -21,8 +21,8 @@ app.use(function (err, req, res, next) {
 app.use(express.static(path.join(__dirname, "cooldash", "build")));
 
 // Constants
-const port = 80;
-// const port = 8080; 
+const port = 80;        // for aws ecs deployment
+// const port = 8080;   // for local testing
 
 // App
 app.get('/', (req, res) => {
