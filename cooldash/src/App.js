@@ -55,28 +55,86 @@ function SplitPane(props) {
 
   
 
-function App() {
+export default class App extends PureComponent {
+	constructor(props) {
+		super(props);
+		this.state = {value: props.ticker};
+		this.handleClick = this.handleClick.bind(this);
+	}
+	
+	handleClick() {
+		let newTicker = document.getElementById("ticker_text").value;
+		
+		this.setState({value: newTicker}, function () {
+			
+		});
+	}
+
+	render() {
+		// this.News = <Newsapp ticker = {this.state.value} />;
+		// this.Price = <Pricegraph ticker = {this.state.value} />;
+		
+		
+
+		return (	
+			<div>
+				<p>Ticker: <input type="text" id="ticker_text" name="ticker_text"></input> 
+				<button onClick={this.handleClick}>
+        			Search
+      			</button> </p>
+				<SplitPane
+				top={
+					<Newsapp id = "newsapp" ticker = {this.state.value} />
+				}
+				bottom={
+					<Pricegraph id = "pricegraph" ticker = {this.state.value}/>
+				} />
+      		</div>
+		);
+	}
+
+	  
+	// constructor(props) {
+	// 	super(props);
+	// 	this.state = {quote: "FMCC"};
+	// 	this.handleChange = this.handleChange.bind(this);
+    // 	this.handleSubmit = this.handleSubmit.bind(this);
+	// }
   
-	var News = <Newsapp />
-	var Price = <Pricegraph />
-    return (
-    <SplitPane
-      top={
-        News
-      }
-      mid={
-        <Mid />
-      }
-      bottom={
-        Price
-      } />
-  );
+	// // Write search function that onclick changes the value
+	// handleChange(event) {
+	// 	this.setState({value: event.target.value});
+	// }
+	
+	// handleSubmit(event) {
+	// 	alert('A name was submitted: ' + this.state.value);
+	// 	event.preventDefault();
+	// }
+	
+
+	// // Pass props down to the children
+	// render() {
+	// var News = <Newsapp />;
+	// var Price = <Pricegraph />;
+    // return (
+		
+	// 	<form onSubmit={this.handleSubmit}>
+	// 		<label>
+	// 			Quote:
+	// 		<input type="text" value={this.state.value} onChange={this.handleChange} />
+	// 		</label>
+	// 		<input type="submit" value="Search" />
+	// 	</form>
+	// 	// <SplitPane
+	// 	// top={
+	// 	// 	News
+	// 	// }
+	// 	// mid={
+			
+	// 	// }
+	// 	// bottom={
+	// 	// 	Price
+	// 	// } />
+	// 	);
+	// }
 }
-
-
-
-
-
-
-
-export default App;

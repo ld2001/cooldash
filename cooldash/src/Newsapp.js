@@ -3,7 +3,7 @@ import React, {PureComponent} from 'react';
 export default class Newsapp extends PureComponent {
 	constructor(props) {
 		super(props);
-		this.state = {data1: [],data2 : []};
+		this.state = {data1: [],data2 : [], ticker: "FMCC"};
 	}
 
 	render() {
@@ -22,8 +22,10 @@ export default class Newsapp extends PureComponent {
 	}
 
 	getData(){
-		 
-		fetch("https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?count=10&offset=0&mkt=en-US&q=Freddie%20Mac", {
+		
+		let fetchval = "https://microsoft-azure-bing-news-search-v1.p.rapidapi.com/search?count=10&offset=0&mkt=en-US&q=" + this.state.ticker;
+		
+		fetch(fetchval, {
 			"method": "GET",
 			"headers": {
 				"x-rapidapi-host": "microsoft-azure-bing-news-search-v1.p.rapidapi.com",
@@ -53,8 +55,22 @@ export default class Newsapp extends PureComponent {
 				
 		})
 	}
-	  
+
+
+	componentWillReceiveProps(nextProps) {
+		if(!(this.props.value == nextProps)) // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
+		{
+		  
 	
+		  this.setState({ticker: nextProps.ticker}, function () {
+				this.getData();
+		  		this.render();
+		  });
+		  
+		}
+	}
+	
+
 	componentDidMount(){
 		this.getData();	// comment it out (try not to make API calls)
 		this.render();

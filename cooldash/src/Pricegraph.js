@@ -8,7 +8,7 @@ export default class Pricegraph extends PureComponent {
   
 	constructor(props) {
 		super(props);
-		this.state = {data: new Object()};
+		this.state = {data: new Object(), ticker : props.ticker};
 	}
 
 	render() {
@@ -31,9 +31,23 @@ export default class Pricegraph extends PureComponent {
 	  );
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if(!(this.props.value == nextProps)) // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
+		{
+		  
+	
+		  this.setState({ticker: nextProps.ticker}, function () {
+				this.getData();
+		  		this.render();
+		  });
+		  
+		}
+	}
+
 	getData(){
-		 
-		fetch("https://yahoo-finance15.p.rapidapi.com/api/yahoo/hi/history/FMCC/1d", {
+		let fetchval = "https://yahoo-finance15.p.rapidapi.com/api/yahoo/hi/history/" + this.state.ticker + "/1d";
+   
+        fetch(fetchval, {
 			"method": "GET",
 			"headers": {
 				"x-rapidapi-host": "yahoo-finance15.p.rapidapi.com",
@@ -59,10 +73,9 @@ export default class Pricegraph extends PureComponent {
 				
 		})
 	}
-	  
-	
+
 	componentDidMount(){
-	// this.getData();
+	this.getData();
 	this.render();
 	}
   }
