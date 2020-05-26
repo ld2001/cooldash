@@ -9,14 +9,24 @@ const transaction_db = require('../models/transaction');   // daily log of tradi
 const prediction_db = require('../models/prediction');     // algorithm prediction and actual turnout
 
 var ddb = new AWS.DynamoDB();
+// var docClient = new AWS.DynamoDB.DocumentClient();
 
+// get a list of transactions from the db
+router.route('/').get((req, res) => {
 
-// // get a list of transactions from the db
-// router.route('/').get((req, res) => {
-//     if 
-
-
-// });
+    var params = {
+        TableName: 'transactions',
+    }
+    ddb.scan(params, function (err, data) {
+        if (err) {
+            console.log("Error", JSON.stringify(err, null, 2));
+        } else {
+            // var results = JSON.stringify(data, null, 2);
+            res.json(data.Items);
+            // console.log("success", results);
+        }
+    })
+});
 
 // post it on the database
 router.route('/add').post((req, res) => {

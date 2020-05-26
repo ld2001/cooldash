@@ -8,11 +8,15 @@ export default class Pricegraph extends PureComponent {
   
 	constructor(props) {
 		super(props);
-		this.state = {data: new Object(), ticker : props.ticker};
+		this.state = { data: {}, ticker : props.ticker};
 	}
 
 	render() {
 	  return (
+		<div class = "pricebox">
+			<div>
+				<h3>The Latest {this.state.ticker} Stock Price</h3>
+			</div>
 		<LineChart
 		  width={500}
 		  height={300}
@@ -28,11 +32,12 @@ export default class Pricegraph extends PureComponent {
 		  <Legend />
 		  <Line type="monotone" dataKey="Price" stroke="#8884d8" activeDot={{ r: 0 }} dot={false} />
 		</LineChart>
+		</div>
 	  );
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if(!(this.props.value == nextProps)) // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
+		if(!(this.props.value === nextProps)) // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
 		{
 		  
 	
@@ -63,7 +68,7 @@ export default class Pricegraph extends PureComponent {
 			.then (response => {
 				var newData = [];
 				for (const day in response.items) {
-					var temp = new Object();
+					var temp = {};
 					temp["Date"] = response.items[day].date;
 					temp["Price"] = response.items[day].close;
 					newData.push(temp);	

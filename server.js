@@ -18,14 +18,15 @@ app.use(function (err, req, res, next) {
     res.status(422).send({ error: err.message });
 });
 
+app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, "cooldash", "build")));
 
 // Constants
-const port = 80;        // for aws ecs deployment
-// const port = 8080;   // for local testing
+// const port = 80;        // for aws ecs deployment
+const port = 8080;   // for local testing
 
 // App
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     // res.send('Hello World');
     res.sendFile(path.join(__dirname, "cooldash", "build", "index.html"));
 });

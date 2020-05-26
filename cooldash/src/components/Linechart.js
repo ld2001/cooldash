@@ -1,4 +1,3 @@
-
 var React = require('react');
 var Component = React.Component;
 var CanvasJSReact = require('./canvasjs.react');

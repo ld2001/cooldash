@@ -8,8 +8,8 @@ export default class Newsapp extends PureComponent {
 
 	render() {
 		console.log(this.state.data1);
-		let returnVals = new Array;
-		let arrayab = ["a","b"]
+		let returnVals = [];
+		// let arrayab = ["a","b"]
 
 		for(let i = 0; i < 10; i++ ) {
 			returnVals.push(<div>{this.state.data1[i]} <a href = {this.state.data2[i]}>Link</a></div>);
@@ -17,7 +17,10 @@ export default class Newsapp extends PureComponent {
 		}
 
 		return (
-			<p class = "news">{returnVals}</p>
+			<div class = "newsbox">
+				<h3>The Latest {this.state.ticker} News </h3>
+				<div class = "news">{returnVals}</div>
+			</div>
 		);
 	}
 
@@ -58,7 +61,7 @@ export default class Newsapp extends PureComponent {
 
 
 	componentWillReceiveProps(nextProps) {
-		if(!(this.props.value == nextProps)) // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
+		if(!(this.props.value === nextProps)) // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
 		{
 		  
 	
