@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+body {
+  background-color: lightskyblue;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -34,14 +38,40 @@
   width: 50px;
 }
 
+.outterbox {
+  border: black solid 2px;
+  margin: 10px;
+  background-color: white;
+  padding: 10px;
+}
+
 .Contacts {
   color: rgb(160, 92, 92);
   height: 50px;
   width: 50px;
 }
 
-div {
-  border: 2px solid black;
+.SplitPane {
+  align-content: center;
+}
+
+h3, h1 {
+  text-align: center;
+}
+
+.newsbox {
+  background-color: beige;
+  display: inline-block;
+  width: 50%;
+}
+.pricebox {
+  background-color: rgb(230, 230, 230);
+  display: inline-block;
+  width: 50%;
+}
+
+.recharts-wrapper {
+  margin: auto;
 }
 
 @keyframes App-logo-spin {
@@ -71,11 +101,19 @@ div {
 }
 
 .news {
-  width: 600px;
   overflow: scroll;
   height: 300px;
+  margin: 0;
 }
 
+#leftplane {
+  width: 550px;
+}
+
+
+#rightplane {
+  width: 550px;
+}
 span {
   overflow: hidden;
 }

@@ -13,6 +13,10 @@ export default class Pricegraph extends PureComponent {
 
 	render() {
 	  return (
+		<div class = "pricebox">
+			<div>
+				<h3>The Latest {this.state.ticker} Stock Price</h3>
+			</div>
 		<LineChart
 		  width={500}
 		  height={300}
@@ -28,6 +32,7 @@ export default class Pricegraph extends PureComponent {
 		  <Legend />
 		  <Line type="monotone" dataKey="Price" stroke="#8884d8" activeDot={{ r: 0 }} dot={false} />
 		</LineChart>
+		</div>
 	  );
 	}
 

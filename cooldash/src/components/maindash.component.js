@@ -5,15 +5,12 @@ import Pricegraph from './Pricegraph.js';
 function SplitPane(props) {
 	return (
 	  <div className="SplitPane">
-		  <div className="SplitPane-left">
-			  {props.top}
-		  </div>
-		  <div className="SplitPane-mid">
-			  {props.mid}
-		  </div>
-		  <div className="SplitPane-right">
-			  {props.bottom}
-		  </div>
+			<span id = "leftplane" class = "Left">
+			{props.left}
+			</span>
+			<span id = "rightplane" class = "Right">
+			{props.right}
+			</span>
 	  </div>
 	);
 }
@@ -39,23 +36,25 @@ export default class MainDashboard extends PureComponent {
 
 	render() {
 
-		return (	
-			<div>
+		return (
+			<div><h1 class = "titlebar">Welcome to Luke and Haeyoon's Trading Dashboard!</h1>	
+			<div class = "outterbox">
 				<p>Ticker: <input type="text" id="ticker_text" name="ticker_text"></input> 
 				<button onClick={this.handleClick}>
         			Search
       			</button> </p>
 				<SplitPane
-					top={
+					left={
 						<Newsapp id="newsapp" ticker={this.state.value} />
 					}
-					bottom={
+					right= {
 						<Pricegraph id="pricegraph" ticker={this.state.value} />
 					}
 				/>
 				<br />
 				<button onClick={this.goToRecordTransaction}>Record Transaction</button>
       		</div>
+			</div	>
 		);
 	}
 }
