@@ -96,7 +96,7 @@ export default class DataInput extends Component {
                 console.log(res.data);
             });
         
-        // window.location = '/admin';
+        window.location = '/admin';
 
         // update the table with latest data input
         // this.setState({
