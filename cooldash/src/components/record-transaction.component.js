@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+// functional react component 
+const Record = props => (
+    <tr>
+        <td>{props.record.date.S}</td>
+        <td>{props.record.ticker.S}</td>
+        <td>{props.record.order.S}</td>
+        <td>{props.record.num_share.N}</td>
+        <td>{props.record.per_share_price.N}</td>
+    </tr>
+)
+
 export default class DataInput extends Component {
     constructor(props) {
         super(props);
@@ -12,13 +23,28 @@ export default class DataInput extends Component {
         this.handleSharePrice = this.handleSharePrice.bind(this);
         this.goToMainDashboard = this.goToMainDashboard.bind(this);
 
+        // state is like a big bag of variables
         this.state = {
             date: '',
             ticker: '',
             order: '', 
             num_share: '',
             per_share_price: '',
+            search_key: '',
+            records: [], 
+            filteredRecords: []
         }
+    }
+
+    componentDidMount() { 
+        axios.get('/adminTransaction')
+            .then(response => { 
+                console.log(response.data);
+                this.setState({ records: response.data });
+            })
+            .catch((err) => { 
+                console.log(err);
+            })
     }
 
     handleDate(e) { 
@@ -54,7 +80,6 @@ export default class DataInput extends Component {
     onSubmit(e) { 
         e.preventDefault(); 
 
-        console.log("will it work?");
         const dailyrecord = {
             date: this.state.date,  
             ticker: this.state.ticker,
@@ -63,19 +88,31 @@ export default class DataInput extends Component {
             per_share_price: this.state.per_share_price,
         }
 
-        console.log(dailyrecord);
-        console.log("success");
+        // console.log(dailyrecord);
 
+        // post it in the backend 
         axios.post('/adminTransaction/add', dailyrecord)
             .then(res => {
                 console.log(res.data);
             });
         
-        window.location = '/admin';
+        // window.location = '/admin';
+
+        // update the table with latest data input
+        // this.setState({
+        //     filteredRecords: this.state.records
+        // })
     }
 
     goToMainDashboard() { 
         window.location = '/';
+    }
+
+    recordList() { 
+        return this.state.records.map(item => {
+            // console.log(item);
+            return <Record record={item} />
+        });
     }
 
 	render() {
@@ -121,6 +158,27 @@ export default class DataInput extends Component {
                     </section>
                 </form>
                 <button onClick={this.goToMainDashboard}>Go To Main Dashboard</button>
+            
+                <div>
+                    <h3>Past Transactions</h3>
+                    <table className="table">
+                        <thead className="thead-light">
+                            <tr>
+                                <th>Date</th>
+                                <th>Ticker</th>
+                                <th>Order</th>
+                                <th>Number of Shares</th>
+                                <th>Per Share Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.recordList()}
+                        </tbody>
+
+                    </table>
+                </div>
+            
             </div>            
 		);
 	}
