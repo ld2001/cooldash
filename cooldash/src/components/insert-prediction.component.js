@@ -9,11 +9,10 @@ const Record = props => (
         <td>{props.record.order.S}</td>
         <td>{props.record.num_share.N}</td>
         <td>{props.record.per_share_price.N}</td>
-        <td>Fill it out</td>
     </tr>
 )
 
-export default class RecordTransaction extends Component {
+export default class InsertPrediction extends Component {
     constructor(props) {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
@@ -22,6 +21,7 @@ export default class RecordTransaction extends Component {
         this.handleOrder = this.handleOrder.bind(this);
         this.handleNumShare = this.handleNumShare.bind(this);
         this.handleSharePrice = this.handleSharePrice.bind(this);
+        // this.goToMainDashboard = this.goToMainDashboard.bind(this);
 
         // state is like a big bag of variables
         this.state = {
@@ -88,6 +88,8 @@ export default class RecordTransaction extends Component {
             per_share_price: this.state.per_share_price,
         }
 
+        // console.log(dailyrecord);
+
         // post it in the backend 
         axios.post('/adminTransaction/add', dailyrecord)
             .then(res => {
@@ -102,6 +104,10 @@ export default class RecordTransaction extends Component {
         // })
     }
 
+    // goToMainDashboard() { 
+    //     window.location = '/';
+    // }
+
     recordList() { 
         return this.state.records.map(item => {
             // console.log(item);
@@ -111,9 +117,9 @@ export default class RecordTransaction extends Component {
 
 	render() {
         return (
-            <div className="trade-container">
-                <form className="item1" onSubmit={this.onSubmit}>
-                    <h1>Log Today's Trade</h1>
+            <div className="container">
+                <h1>Magic Box said... and turned out...</h1>
+                <form style={{ margin: 10 }} onSubmit={this.onSubmit}>
                     <section>
                         <label htmlFor="date">Date</label>
                         <input type="date" id="date" onChange={this.handleDate}/>
@@ -137,21 +143,30 @@ export default class RecordTransaction extends Component {
                         <label htmlFor="per-share-price">Per Share Price</label>
                         <input type="number" step=".01" id="per-share-price" onChange={this.handleSharePrice}/>
                     </section>		
+                    {/* <section>
+                        <label htmlFor="prediction">Prediction</label>
+                        <input type="number" step=".01" id="prediction" onChange={this.handlePrediction}/>
+                    </section>
+                    <section>
+                        <label htmlFor="actual">Actual Performance</label>
+                        <input type="number" step=".01" id="actual" onChange={this.handleActual}/>
+                    </section> */}
                     <section className="button-container">
                         <button className="button" type="submit">Submit</button>
                         <button className="button" type="reset">Reset</button>
                     </section>
                 </form>
+                {/* <button onClick={this.goToMainDashboard}>Go To Main Dashboard</button> */}
             
-                <div className="item2">
-                    <h1>Past Transactions</h1>
+                <div>
+                    <h3>Past Transactions</h3>
                     <table className="table">
                         <thead className="thead-light">
                             <tr>
                                 <th>Date</th>
                                 <th>Ticker</th>
                                 <th>Order</th>
-                                <th>No. of Shares</th>
+                                <th>Number of Shares</th>
                                 <th>Per Share Price</th>
                                 <th>Actions</th>
                             </tr>

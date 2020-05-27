@@ -15,7 +15,7 @@ export default class Sidebar extends Component {
     render() { 
         return (
             <SideNav onToggle= {() => {
-                if (this.state.expanded == 'false') {
+                if (this.state.expanded === 'false') {
                     document.getElementById('root').style.marginLeft = '240px';
                     this.state.expanded = 'true';
                 } else {
@@ -42,18 +42,18 @@ export default class Sidebar extends Component {
                             </Link>
                         </NavIcon>
                         <NavText>
-                            <Link to="/admin" style={{textDecoration: 'none'}}>Admin</Link>
+                            <Link to="/admin" style={{textDecoration: 'none'}}>Trades</Link>
                         </NavText>
-                        <NavItem eventKey="trades">
-                            <NavText>
-                                Trades
-                            </NavText>
-                        </NavItem>
-                        <NavItem eventKey="model">
-                            <NavText>
-                                Model
-                            </NavText>
-                        </NavItem>
+                    </NavItem>
+                    <NavItem eventKey="model">
+                        <NavIcon>
+                            <Link to="/model">
+                                <i className="fa fas fa-cube" style={{ fontSize: '1.75em' }} />
+                            </Link>
+                        </NavIcon>
+                        <NavText>
+                            <Link to="/model" style={{textDecoration: 'none'}}>Model</Link>
+                        </NavText>
                     </NavItem>
                 </SideNav.Nav>
             </SideNav>

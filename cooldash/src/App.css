@@ -118,12 +118,70 @@ span {
   overflow: hidden;
 }
 
-table {
+/* table {
   width: 95%;
   align-content: center;
   margin: auto;
+} */
+
+table {
+  border-collapse: collapse; 
+  margin: auto; /* put the table in the middle */
 }
+
+tr {
+  padding: 3px;
+}
+
+/* tr:not(:first-child) {
+  border: 0.2px solid #888;
+} */
+
+tr {
+  border: 0.2px solid #888;
+}
+
+th {
+  font-weight: bold;
+  padding: 8px;
+  background: #006060;
+  color: white;
+  padding: 20px;
+  border: 0.2px solid #006060;
+}
+
+td {
+  padding: 20px;
+}
+
+tr:hover {
+  background: rgba(0, 96, 96, 0.1);
+}
+
 
 #root {
   margin-left: 64px; 
+}
+
+section {
+  margin: auto; 
+  padding: 2px; 
+}
+
+.trade-container {
+  display: grid; 
+  grid-template-rows: 1fr; 
+  grid-template-columns: 1fr 2fr;
+}
+
+.item1{
+  border: 1px solid grey;
+  margin: 1%; 
+  grid-area: 1 / 1;
+}
+
+.item2 {
+  border: 1px solid grey; 
+  margin: 1%; 
+  grid-area: 1 / 2; 
 }
