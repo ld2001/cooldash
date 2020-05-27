@@ -32,7 +32,7 @@ export default class Newsapp extends PureComponent {
 			"method": "GET",
 			"headers": {
 				"x-rapidapi-host": "microsoft-azure-bing-news-search-v1.p.rapidapi.com",
-				"x-rapidapi-key": "5447e4c19amsh97fe59f8c09fabdp127dfcjsn0d4259531f73",
+				"x-rapidapi-key": process.env.REACT_APP_RAPID_KEY,
 				"useQueryString": true
 			}
 			})

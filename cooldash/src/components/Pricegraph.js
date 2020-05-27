@@ -56,7 +56,7 @@ export default class Pricegraph extends PureComponent {
 			"method": "GET",
 			"headers": {
 				"x-rapidapi-host": "yahoo-finance15.p.rapidapi.com",
-				"x-rapidapi-key": "5447e4c19amsh97fe59f8c09fabdp127dfcjsn0d4259531f73",
+				"x-rapidapi-key": process.env.REACT_APP_RAPID_KEY,
 				"useQueryString": true
 			}
 			})

@@ -8,6 +8,7 @@ import RecordTransaction from "./components/record-transaction.component";
 import InsertPrediction from "./components/insert-prediction.component";
 
 function App() { 
+	alert(process.env.REACT_APP_RAPID_KEY);
 	return (
 		<Router>
 			<div className="container">
