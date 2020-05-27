@@ -20,7 +20,7 @@ export default class MainDashboard extends PureComponent {
 		super(props);
 		this.state = {value: props.ticker};
 		this.handleClick = this.handleClick.bind(this);
-		this.goToRecordTransaction = this.goToRecordTransaction.bind(this);
+		// this.goToRecordTransaction = this.goToRecordTransaction.bind(this);
 	}
 	
 	handleClick() {
@@ -30,9 +30,9 @@ export default class MainDashboard extends PureComponent {
 		});
 	}
 
-	goToRecordTransaction() { 
-		window.location = "/admin";
-	}
+	// goToRecordTransaction() { 
+	// 	window.location = "/admin";
+	// }
 
 	render() {
 
@@ -52,7 +52,7 @@ export default class MainDashboard extends PureComponent {
 					}
 				/>
 				<br />
-				<button onClick={this.goToRecordTransaction}>Record Transaction</button>
+				{/* <button onClick={this.goToRecordTransaction}>Record Transaction</button> */}
       		</div>
 			</div	>
 		);

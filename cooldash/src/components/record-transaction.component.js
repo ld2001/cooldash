@@ -21,7 +21,7 @@ export default class DataInput extends Component {
         this.handleOrder = this.handleOrder.bind(this);
         this.handleNumShare = this.handleNumShare.bind(this);
         this.handleSharePrice = this.handleSharePrice.bind(this);
-        this.goToMainDashboard = this.goToMainDashboard.bind(this);
+        // this.goToMainDashboard = this.goToMainDashboard.bind(this);
 
         // state is like a big bag of variables
         this.state = {
@@ -104,9 +104,9 @@ export default class DataInput extends Component {
         // })
     }
 
-    goToMainDashboard() { 
-        window.location = '/';
-    }
+    // goToMainDashboard() { 
+    //     window.location = '/';
+    // }
 
     recordList() { 
         return this.state.records.map(item => {
@@ -157,7 +157,7 @@ export default class DataInput extends Component {
                         <button className="button" type="reset">Reset</button>
                     </section>
                 </form>
-                <button onClick={this.goToMainDashboard}>Go To Main Dashboard</button>
+                {/* <button onClick={this.goToMainDashboard}>Go To Main Dashboard</button> */}
             
                 <div>
                     <h3>Past Transactions</h3>
