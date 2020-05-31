@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 // functional react component 
@@ -9,7 +10,9 @@ const Record = props => (
         <td>{props.record.order.S}</td>
         <td>{props.record.num_share.N}</td>
         <td>{props.record.per_share_price.N}</td>
-        <td>Fill it out</td>
+        <td>
+            <Link to="#" onClick={ () => props.deleteRecord(props.record.trans_id)}>delete</Link>
+        </td>
     </tr>
 )
 
@@ -22,12 +25,13 @@ export default class RecordTransaction extends Component {
         this.handleOrder = this.handleOrder.bind(this);
         this.handleNumShare = this.handleNumShare.bind(this);
         this.handleSharePrice = this.handleSharePrice.bind(this);
+        this.deleteRecord = this.deleteRecord.bind(this);
 
         // state is like a big bag of variables
         this.state = {
             date: '',
             ticker: '',
-            order: '', 
+            order: 'sell', 
             num_share: '',
             per_share_price: '',
             search_key: '',
@@ -81,6 +85,7 @@ export default class RecordTransaction extends Component {
         e.preventDefault(); 
 
         const dailyrecord = {
+            trans_id: Date.now().toString(), 
             date: this.state.date,  
             ticker: this.state.ticker,
             order: this.state.order, 
@@ -102,10 +107,19 @@ export default class RecordTransaction extends Component {
         // })
     }
 
+    deleteRecord(id) { 
+        console.log(id.S);
+        axios.delete('/adminTransaction/'+id.S)
+            .then(response => { console.log(response.data) });
+        this.setState({
+            records: this.state.records.filter(element => element.trans_id !== id)
+        })
+    }
+
     recordList() { 
         return this.state.records.map(item => {
-            // console.log(item);
-            return <Record record={item} />
+            return <Record record={item} deleteRecord={this.deleteRecord}
+            key={item.trans_id}/>
         });
     }
 
@@ -124,7 +138,7 @@ export default class RecordTransaction extends Component {
                     </section>
                     <section>
                         <label htmlFor="order">Order</label>
-                        <select name="" id="order" onChange={this.handleOrder}>
+                        <select name="" id="order" onChange={this.handleOrder} defaultValue="sell">
                             <option value="sell">Sell</option>
                             <option value="buy">Buy</option>
                             <option value="hold">Hold</option>

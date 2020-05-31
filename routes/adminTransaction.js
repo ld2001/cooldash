@@ -38,7 +38,9 @@ router.route('/add').post((req, res) => {
     //         console.log("Table names are ", data.TableNames);
     //     }
     // });
-   
+  
+    // const trans_id = Date.now().toString();
+    const trans_id = req.body.trans_id;
     const date = req.body.date; 
     const ticker = req.body.ticker;
     const order = req.body.order;
@@ -56,6 +58,7 @@ router.route('/add').post((req, res) => {
     var item = {
         TableName: 'transactions',
         Item: {
+            'trans_id': {S: trans_id},
             'date': { S: date },
             'ticker': { S: ticker }, 
             'order': { S: order },
@@ -73,10 +76,28 @@ router.route('/add').post((req, res) => {
     });
 });
 
-// // get item from the database
-// router.route('/:id').get((req, res) => { 
+// delete item from the database
+router.route('/:id').delete((req, res) => { 
+    
+    console.log(req.param.id);
+    
+    var item = {
+        TableName: 'transactions',
+        Key: {
+            'trans_id': {S: req.params.id}
+        },
+    }
 
-// });
+    console.log("here at admin " + req.params.id.toString());
+
+    ddb.deleteItem(item, function (err, data) { 
+        if (err) {
+            console.log("Error", err);
+        } else { 
+            console.log("Success - delete", data);
+        }
+    })
+});
 
 
 module.exports = router; 
