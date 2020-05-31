@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: lightskyblue;
+  /* background-color: lightskyblue; */
 }
 
 .App-logo {
@@ -28,18 +28,8 @@ body {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-.Chat {
-  color: #61dafb;
-  height: 50px;
-  width: 50px;
-}
-
 .outterbox, .container {
-  border: black solid 2px;
+  border: none;
   margin: 10px;
   background-color: white;
   padding: 10px;
@@ -60,12 +50,19 @@ h3, h1 {
 }
 
 .newsbox {
-  background-color: beige;
+  /* background-color: beige; */
+  background-color: white; 
+  display: inline-block;
+  width: 100%;
+}
+.pricebox {
+  /* background-color: rgb(230, 230, 230); */
+  background-color: white; 
   display: inline-block;
   width: 50%;
 }
-.pricebox {
-  background-color: rgb(230, 230, 230);
+.sectorperformance, .tradebox, .comparison {
+  background-color:white;
   display: inline-block;
   width: 50%;
 }
@@ -101,7 +98,8 @@ h3, h1 {
 }
 
 .news {
-  overflow: scroll;
+  /* overflow: scroll; */
+  overflow: hidden; 
   height: 300px;
   margin: 0;
 }
@@ -138,7 +136,7 @@ tr {
 } */
 
 tr {
-  border: 0.2px solid #888;
+  /* border: 0.2px solid #888; */
 }
 
 th {
@@ -147,7 +145,7 @@ th {
   background: #006060;
   color: white;
   padding: 20px;
-  border: 0.2px solid #006060;
+  /* border: 0.2px solid #006060; */
 }
 
 td {
