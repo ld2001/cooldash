@@ -39,13 +39,10 @@ export default class Pricegraph extends PureComponent {
 	componentWillReceiveProps(nextProps) {
 		if(!(this.props.value === nextProps)) // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
 		{
-		  
-	
 		  this.setState({ticker: nextProps.ticker}, function () {
 				this.getData();
 		  		this.render();
 		  });
-		  
 		}
 	}
 

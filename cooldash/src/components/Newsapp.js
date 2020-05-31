@@ -3,17 +3,19 @@ import React, {PureComponent} from 'react';
 export default class Newsapp extends PureComponent {
 	constructor(props) {
 		super(props);
-		this.state = {data1: [],data2 : [], ticker: "FMCC"};
+		this.state = {
+			data1: [],
+			data2: [],
+			ticker: "FMCC"
+		};
 	}
 
 	render() {
 		console.log(this.state.data1);
 		let returnVals = [];
-		// let arrayab = ["a","b"]
 
 		for(let i = 0; i < 10; i++ ) {
 			returnVals.push(<div>{this.state.data1[i]} <a href = {this.state.data2[i]}>Link</a></div>);
-			// returnVals.push(<div>{this.state.data2[i]}</div>);
 		}
 
 		return (
@@ -37,20 +39,12 @@ export default class Newsapp extends PureComponent {
 			}
 			})
 			.then(response => response.json())
-			.then(response => {
-			console.log(response);
-			return response;
-			}) 
 			.then (response => {
 				var newData1 = [];
 				var newData2 = [];
 				for (const number in response.value) {
-					// var temp = new Object();
-					// newData.push(response.value[number].name)
-					
 					newData1.push(response.value[number].name);
 					newData2.push(response.value[number].url);
-					// newData.push(temp);	
 				}
 
 				this.setState({data1: newData1});
@@ -63,8 +57,6 @@ export default class Newsapp extends PureComponent {
 	componentWillReceiveProps(nextProps) {
 		if(!(this.props.value === nextProps)) // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
 		{
-		  
-	
 		  this.setState({ticker: nextProps.ticker}, function () {
 				this.getData();
 		  		this.render();
