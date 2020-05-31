@@ -1,14 +1,18 @@
 
 var transactions = {
-    AttributeDefinitions: [
-      {
-          AttributeName: 'date',
-          AttributeType: 'S'
-      }, 
-      {
-        AttributeName: 'ticker',
-        AttributeType: 'S'
-      },
+  AttributeDefinitions: [
+    {
+      AttributeName: 'trans_id',
+      AttributeType: 'S'
+    }
+      // {
+      //   AttributeName: 'ticker',
+      //   AttributeType: 'S'
+      // },     
+      // {
+      //     AttributeName: 'date',
+      //     AttributeType: 'S'
+      // }, 
     //   {
     //     AttributeName: 'order',
     //     AttributeType: 'S'
@@ -22,15 +26,19 @@ var transactions = {
     //       AttributeType: 'N'
     //   }
     ],
-    KeySchema: [
-      {
-        AttributeName: 'date',
-        KeyType: 'HASH'
-      },
-      {
-        AttributeName: 'ticker',
-        KeyType: 'RANGE'
-      }
+  KeySchema: [
+    {
+      AttributeName: 'trans_id',
+      KeyType: 'HASH'
+    }
+      // {
+      //   AttributeName: 'ticker',
+      //   KeyType: 'HASH'
+      // }, 
+      // {
+      //   AttributeName: 'date',
+      //   KeyType: 'RANGE'
+      // },
     ],
     ProvisionedThroughput: {
       ReadCapacityUnits: 1,
