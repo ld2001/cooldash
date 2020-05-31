@@ -17,10 +17,10 @@ export default class Sidebar extends Component {
             <SideNav onToggle= {() => {
                 if (this.state.expanded === 'false') {
                     document.getElementById('root').style.marginLeft = '240px';
-                    this.state.expanded = 'true';
+                    this.setState({ expanded: 'true' });
                 } else {
                     document.getElementById('root').style.marginLeft = '64px';
-                    this.state.expanded = 'false';
+                    this.setState({ expanded: 'false' });
                 }
             }}>
                 <SideNav.Toggle/>
