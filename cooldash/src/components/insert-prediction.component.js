@@ -10,7 +10,7 @@ const Record = props => (
         <td>{props.record.predicted.N}</td>
         <td>{props.record.actual.N}</td>
         <td>
-            <Link to="#" onClick={ () => props.deleteRecord(props.record.trans_id)}>delete</Link>
+            <Link to="#" onClick={ () => props.deleteRecord(props.record.pred_id)}>delete</Link>
         </td>
     </tr>
 )
@@ -105,7 +105,7 @@ export default class Prediction extends Component {
     recordList() { 
         return this.state.records.map(item => {
             return <Record record={item} deleteRecord={this.deleteRecord}
-            key={item.trans_id}/>
+            key={item.pred_id}/>
         });
     }
 
@@ -114,7 +114,7 @@ export default class Prediction extends Component {
             <div className="trade-container">
                 <form className="" onSubmit={this.onSubmit}>
                     <section>
-                    <h3 className="trade-header">Prediction</h3>
+                    <h3 className="trade-header">Prediction Log</h3>
                     </section>
                     <section>
                         <label htmlFor="date">Date</label>
