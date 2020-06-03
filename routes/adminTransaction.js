@@ -6,7 +6,6 @@ AWS.config.update({
 const express = require('express');
 const router = express.Router(); 
 const transaction_db = require('../models/transaction');   // daily log of trading
-const prediction_db = require('../models/prediction');     // algorithm prediction and actual turnout
 
 var ddb = new AWS.DynamoDB();
 // var docClient = new AWS.DynamoDB.DocumentClient();
