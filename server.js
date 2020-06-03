@@ -12,6 +12,7 @@ app.use(bodyParser.json());     // to accept json file
 
 // initialize routes
 app.use('/adminTransaction', require('./routes/adminTransaction'));
+app.use('/adminPrediction', require('./routes/adminPrediction'));
 
 // error handling middleware
 app.use(function (err, req, res, next) { 
@@ -22,8 +23,8 @@ app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, "cooldash", "build")));
 
 // Constants
-const port = 80;        // for aws ecs deployment
-// const port = 8080;   // for local testing
+// const port = 80;        // for aws ecs deployment
+const port = 8080;   // for local testing
 
 // App
 app.get('*', (req, res) => {
