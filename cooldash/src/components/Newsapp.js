@@ -19,9 +19,9 @@ export default class Newsapp extends PureComponent {
 		}
 
 		return (
-			<div class = "newsbox">
-				<h3>The Latest {this.state.ticker} News </h3>
-				<div class = "news">{returnVals}</div>
+			<div className = "container newsbox">
+				<div className ="subtitle">The Latest News {this.state.ticker} </div>
+				<div className = "news">{returnVals}</div>
 			</div>
 		);
 	}

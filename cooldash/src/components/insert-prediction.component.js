@@ -98,7 +98,7 @@ export default class Prediction extends Component {
         axios.delete('/adminPrediction/'+id.S)
             .then(response => { console.log(response.data) });
         this.setState({
-            records: this.state.records.filter(element => element.trans_id !== id)
+            records: this.state.records.filter(element => element.pred_id !== id)
         })
     }
 
@@ -139,7 +139,7 @@ export default class Prediction extends Component {
                 </form>
                 <br /> 
                 <div className="table">
-                    <table className="table">
+                    <table className="table table-sm">
                         <thead className="thead-light">
                             <tr>
                                 <th>Date</th>

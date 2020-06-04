@@ -74,7 +74,9 @@ router.route('/:id').delete((req, res) => {
         },
     }
 
-    ddb2.deleteItem(item, function (err, data) { 
+    console.log("here at admin " + req.params.id.toString());
+
+    ddb.deleteItem(item, function (err, data) { 
         if (err) {
             console.log("Error", err);
         } else { 

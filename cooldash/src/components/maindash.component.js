@@ -2,31 +2,8 @@ import React, { PureComponent } from 'react';
 import Newsapp from './Newsapp.js';
 import Pricegraph from './Pricegraph.js';
 import SectorPerformance from './SectorPerformance.js';
-
-function SplitPane(props) {
-	return (
-	  <div className="SplitPane">
-			<span id = "leftplane" className = "Left">
-				{props.left}
-			</span>
-			<span id = "rightplane" className = "Right">
-				{props.right}
-			</span>
-			<span id = "middleleftplane" className = "MiddleLeft">
-				{props.middleleft}
-			</span>
-			<span id = "middlerightplane" className = "MiddleRight">
-				{props.middleright}
-			</span>
-			<span id="bottomleftplane" className = "BottomLeft">
-				{props.bottomleft}
-			</span>
-			<span id="bottomrightplane" className = "BottomRight">
-				{props.bottomright}
-			</span>
-	  </div>
-	);
-}
+import Transactions from './Transactions.js';
+import ShowPrediction from './Predictions.js';
 
 export default class MainDashboard extends PureComponent {
 	constructor(props) {
@@ -47,19 +24,30 @@ export default class MainDashboard extends PureComponent {
 	render() {
 
 		return (
-			<div><h1 class = "titlebar">Welcome to Luke and Haeyoon's Trading Dashboard!</h1>	
+			<div id="bigbox">
+				<div id="title">STOCK DASHBOARD</div>
 				<div class="outterbox">
-					<p id="quote">{this.state.quote}</p>
-					<p id="author">{this.state.author}</p>
-					<p>Ticker: <input type="text" id="ticker_text" name="ticker_text"></input> 
-					<button onClick={this.handleClick}>
-						Search
-					</button> </p>
-					<SplitPane
-						left={<Newsapp id="newsapp" ticker={this.state.value} news={this.state.news}/>}
-						middleleft={<Pricegraph id="pricegraph" ticker={this.state.value} />}
-						middleright={<SectorPerformance />}
-					/>
+					<div className="item1" id="quote">{this.state.quote} <span id="author">-{this.state.author}</span></div>
+					<div className="item2" id="ticker">
+						{/* <label htmlFor="ticker_text">Which Stock News? </label> */}
+						<input type="text" id="ticker_text" name="ticker_text" placeholder="Enter stock ticker to view related news and prices"></input> 
+						<button onClick={this.handleClick}><i class="fa fa-search"></i></button> 
+					</div>
+					<div className="item3">
+						<Newsapp id="newsapp" ticker={this.state.value} news={this.state.news} />
+					</div>
+					<div className="item4">
+						<Pricegraph id="pricegraph" ticker={this.state.value} />
+					</div>
+					<div className="item5">
+						<SectorPerformance />
+					</div>
+					<div className="item6">
+						<Transactions />
+					</div>
+					<div className="item7">
+						<ShowPrediction />
+					</div>
 				</div>
 			</div>
 		);

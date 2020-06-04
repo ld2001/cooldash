@@ -126,8 +126,10 @@ export default class RecordTransaction extends Component {
 	render() {
         return (
             <div className="trade-container">
-                <form className="item1" onSubmit={this.onSubmit}>
-                    <h1>Log Today's Trade</h1>
+                <form className="" onSubmit={this.onSubmit}>
+                    <section>
+                    <h3 className="trade-header">Trade Log</h3>
+                    </section>
                     <section>
                         <label htmlFor="date">Date</label>
                         <input type="date" id="date" onChange={this.handleDate}/>
@@ -152,14 +154,13 @@ export default class RecordTransaction extends Component {
                         <input type="number" step=".01" id="per-share-price" onChange={this.handleSharePrice}/>
                     </section>		
                     <section className="button-container">
-                        <button className="button" type="submit">Submit</button>
-                        <button className="button" type="reset">Reset</button>
+                        <button className="button btn btn-primary" type="submit">Submit</button>
+                        <button className="button btn btn-secondary" type="reset">Reset</button>
                     </section>
                 </form>
-            
-                <div className="item2">
-                    <h1>Past Transactions</h1>
-                    <table className="table">
+                <br /> 
+                <div className="table">
+                    <table className="table table-sm">
                         <thead className="thead-light">
                             <tr>
                                 <th>Date</th>

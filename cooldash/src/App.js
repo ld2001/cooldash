@@ -11,7 +11,7 @@ function App() {
 
 	return (
 		<Router>
-			<div className="container">
+			<div className="app-container">
 				<Sidebar />
 				<br />
 				<Route path="/" exact component={MainDashboard} />

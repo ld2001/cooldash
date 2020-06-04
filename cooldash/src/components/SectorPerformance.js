@@ -3,17 +3,7 @@ import {
     BarChart, Bar, LabelList, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
   } from 'recharts';
 
-const data = [
-    {
-      name: 'Real Estate', performance: 1.25,
-    },
-    {
-      name: 'Information Technology', performance: 2.25, 
-    },
-    {
-      name: 'Consumer', performance: -1.25,
-    },
-  ];
+
 export default class SectorPerformance extends PureComponent {
 
     constructor(props) { 
@@ -25,12 +15,10 @@ export default class SectorPerformance extends PureComponent {
 
     render() {
         return (
-            <div class="sectorperformance">
-                <div>
-                    <h3>5-day Sector Performance</h3>
-                </div>
+            <div class="container sectorperformance">
+                <div className="subtitle">Sector Performance</div>
                 <BarChart
-                    width={500}
+                    width={1200}
                     height={300}
                     data={this.state.data}
                     margin={{
@@ -41,9 +29,9 @@ export default class SectorPerformance extends PureComponent {
                 <XAxis dataKey="name" />
                 <YAxis label="%"/>
                 <Tooltip />
-                <Legend />
+                {/* <Legend />
                         <Bar dataKey="performance" fill="#82ca9d" />
-                        <LabelList dataKey="performance" angel="45"/>
+                        <LabelList dataKey="performance" angel="45"/> */}
                 </BarChart>
           </div>
 

@@ -13,13 +13,11 @@ export default class Pricegraph extends PureComponent {
 
 	render() {
 	  return (
-		<div class = "pricebox">
-			<div>
-				<h3>The Latest {this.state.ticker} Stock Price</h3>
-			</div>
+		<div className = "container pricebox">
+			  <div className="subtitle">The Latest Stock Price {this.state.ticker}</div>
 		<LineChart
-		  width={500}
-		  height={300}
+		  width={600}
+		  height={330}
 		  data={this.state.data}
 		  margin={{
 			top: 5, right: 30, left: 20, bottom: 5,
@@ -29,7 +27,7 @@ export default class Pricegraph extends PureComponent {
 		  <XAxis dataKey="Date" tick={false}/>
 		  <YAxis />
 		  <Tooltip />
-		  <Legend />
+		  {/* <Legend /> */}
 		  <Line type="monotone" dataKey="Price" stroke="#8884d8" activeDot={{ r: 0 }} dot={false} />
 		</LineChart>
 		</div>
