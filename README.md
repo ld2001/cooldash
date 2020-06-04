@@ -1,16 +1,16 @@
-# cooldash
+# Cooldash
 
-## Description
+### Description
 Financial dashboard that shows news, price graph, sector performance, 
 past transactions and model predictions in table. 
 
-## APIs
+### APIs
 - Yahoo Finance API for price graph
 - Bing News API for news feed
 - Alpha Vantage API for sector performance
 - Daily Inspirational Quote API
 
-## How to run program
+### How to run program
 inside folder cooldash 
 `npm install package.json`
 `npm run build`
