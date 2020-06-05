@@ -4,6 +4,9 @@
 Financial dashboard that shows news, price graph, sector performance, 
 past transactions and model predictions in table. 
 
+### Application URL
+http://cooldash.ipq.co
+
 ### APIs
 - Yahoo Finance API for price graph
 - Bing News API for news feed
