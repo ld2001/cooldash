@@ -29,9 +29,9 @@ export default class SectorPerformance extends PureComponent {
                 <XAxis dataKey="name" />
                 <YAxis label="%"/>
                 <Tooltip />
-                {/* <Legend />
+                <Legend />
                         <Bar dataKey="performance" fill="#82ca9d" />
-                        <LabelList dataKey="performance" angel="45"/> */}
+                        <LabelList dataKey="performance" angel="45"/>
                 </BarChart>
           </div>
 
